@@ -11,6 +11,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import cv2
 
+"""Recylce params for plotting"""
+plt.rc('xtick', labelsize = 20)
+plt.rc('xtick.major', pad = 3)
+plt.rc('ytick', labelsize = 20)
+plt.rc('ytick.major', pad = 3)
+plt.rc('lines', lw = 1.5, markersize = 7.5)
+plt.rc('legend', fontsize = 20)
+
 def plot_confocal(data, FLIM_adjust = True, **kwargs):
     """
     Plot confocal PL intensity image.
