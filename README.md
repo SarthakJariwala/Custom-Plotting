@@ -7,5 +7,5 @@ Custom plotting wrapper functions for scientific plotting
 ```
 import customplotting.mscope as cpm
 
-cpm.plot_confocal(data, size = (10,10), ori = 'lower', color_map = 'inferno', min_int = 0, max_int = 1000)
+cpm.plot_confocal(data, figsize = (10,10), origin = 'lower', cmap = 'inferno', vmin = 0, vmax = 1000)
 ```
