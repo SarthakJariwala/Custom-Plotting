@@ -1,5 +1,5 @@
 # Custom-Plotting
-[![PyPI version](https://badge.fury.io/py/customplotting.svg)](https://pypi.org/project/customplotting/0.1.1/)
+[![PyPI version](https://badge.fury.io/py/customplotting.svg)](https://pypi.org/project/customplotting/)
 
 Custom plotting wrapper functions for scientific plotting
 
