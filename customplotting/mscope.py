@@ -26,25 +26,25 @@ def plot_confocal(data, FLIM_adjust = True, **kwargs):
     Input:
         data: numpy array of PL intensities
         FLIM_adjust: if True, this will plot the image as you see in the FLIM Labview program
-        size: figure size
-        ori: origin of the plot, customisable through matplotlib options
-        color_map: matplotlib colormap
-        min_int: minimum intensity on the colorscale
-        max_int: maximum intensity on the colorscale
+        figsize: figure size
+        origin: origin of the plot, customisable through matplotlib options
+        cmap: matplotlib colormap
+        vmin: minimum intensity on the colorscale
+        vmax: maximum intensity on the colorscale
         
     """
     
-    color_map = kwargs.get('color_map', None)
-    min_int = kwargs.get('min_int', None)
-    max_int = kwargs.get('max_int', None)
-    ori = kwargs.get('ori', None)
-    size = kwargs.get('size', None)
+    cmap = kwargs.get('cmap', None)
+    vmin = kwargs.get('vmin', None)
+    vmax = kwargs.get('vmax', None)
+    origin = kwargs.get('origin', None)
+    figsize = kwargs.get('figsize', None)
     
     if FLIM_adjust == True:    
         data = np.transpose(data)
         
-    plt.figure(figsize=size)
-    plt.imshow(data, origin = ori, cmap = color_map, vmin = min_int, vmax=max_int)
+    plt.figure(figsize=figsize)
+    plt.imshow(data, origin = origin, cmap = cmap, vmin = vmin, vmax = vmax)
     plt.colorbar()
 
 def plot_pixera(data, flip_pixera_to_FLIM = True, **kwargs):
@@ -54,22 +54,22 @@ def plot_pixera(data, flip_pixera_to_FLIM = True, **kwargs):
     Input:
         data: numpy array of PL intensities
         flip_pixera_to_FLIM: if True, this will plot the image aligned in the same way as the image in FLIM Labview program
-        size: figure size
-        ori: origin of the plot, customisable through matplotlib options
-        color_map: matplotlib colormap
-        min_int: minimum intensity on the colorscale
-        max_int: maximum intensity on the colorscale
+        figsize: figure size
+        origin: origin of the plot, customisable through matplotlib options
+        cmap: matplotlib colormap
+        vmin: minimum intensity on the colorscale
+        vmax: maximum intensity on the colorscale
         
     """
     
-    color_map = kwargs.get('color_map', None)
-    min_int = kwargs.get('min_int', None)
-    max_int = kwargs.get('max_int', None)
-    ori = kwargs.get('ori', None)
-    size = kwargs.get('size', None)
+    cmap = kwargs.get('cmap', None)
+    vmin = kwargs.get('vmin', None)
+    vmax = kwargs.get('vmax', None)
+    origin = kwargs.get('origin', None)
+    figsize = kwargs.get('figsize', None)
     
-    plt.figure(figsize=size)
-    plt.imshow(data, origin = ori, cmap = color_map, vmin = min_int, vmax=max_int)
+    plt.figure(figsize=figsize)
+    plt.imshow(data, origin = origin, cmap = cmap, vmin = vmin, vmax=vmax)
     plt.colorbar()
     
     if flip_pixera_to_FLIM == True:
