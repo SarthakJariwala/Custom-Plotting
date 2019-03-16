@@ -22,7 +22,7 @@ plt.rc('legend', fontsize=20)
 plt.rc('axes', linewidth=3.5)
 
 
-def plot_confocal(data, FLIM_adjust=True, scalebar=True, colorbar=True, **kwargs):
+def plot_confocal(data, FLIM_adjust=True, scalebar=True, colorbar=True, ticks_visible=False, **kwargs):
     """
     Plot confocal PL intensity image.
 
@@ -78,8 +78,12 @@ def plot_confocal(data, FLIM_adjust=True, scalebar=True, colorbar=True, **kwargs
         cb = plt.colorbar()
         cb.set_label(cbar_label, fontsize=20, fontweight='bold')
 
+    if ticks_visible == False:
+        plt.gca().axes.get_yaxis().set_visible(False)
+        plt.gca().axes.get_xaxis().set_visible(False)
 
-def plot_pixera(data, flip_pixera_to_FLIM=True, scalebar=True, colorbar=True, **kwargs):
+
+def plot_pixera(data, flip_pixera_to_FLIM=True, scalebar=True, colorbar=True, ticks_visible=False, **kwargs):
     """
     Plot pixera images, with the option to adjust the orientation to FLIM image.
 
@@ -98,6 +102,7 @@ def plot_pixera(data, flip_pixera_to_FLIM=True, scalebar=True, colorbar=True, **
             Refer to https://github.com/ppinard/matplotlib-scalebar for more details
         colorbar: if True, this will plot colorbar for the image. Label can be set using:
             cbar_label: colorbar label, must be string. (default: "PL Intensity (a.u.)")
+        ticks_visible: if False, it will remove xaxis and yaxis ticks
         figsize: figure size
         origin: origin of the plot, customisable through matplotlib options
         cmap: matplotlib colormap
@@ -136,6 +141,10 @@ def plot_pixera(data, flip_pixera_to_FLIM=True, scalebar=True, colorbar=True, **
     if flip_pixera_to_FLIM == True:
         plt.gca().invert_xaxis()
         plt.gca().invert_yaxis()
+
+    if ticks_visible == False:
+        plt.gca().axes.get_yaxis().set_visible(False)
+        plt.gca().axes.get_xaxis().set_visible(False)
 
 
 def Diffusion_plotting(diff_img_path, total_grains, save=False, norm=False):
