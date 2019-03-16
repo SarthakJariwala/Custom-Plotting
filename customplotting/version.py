@@ -5,8 +5,8 @@ from os.path import join as pjoin
 _version_major = 0
 _version_minor = 1
 _version_micro = 2  # use '' for first of series, number for 1 and above
-# _version_extra = 'dev'
-_version_extra = ''  # Uncomment this for full releases
+_version_extra = 'dev'
+# _version_extra = ''  # Uncomment this for full releases
 
 # Construct full version string from these.
 _ver = [_version_major, _version_minor]
@@ -46,4 +46,4 @@ MINOR = _version_minor
 MICRO = _version_micro
 VERSION = __version__
 # PACKAGE_DATA = {'defectfinder': [pjoin('data', '*')]}
-REQUIRES = ["numpy","opencv-python","matplotlib","matplotlib_scalebar"]
+REQUIRES = ["numpy", "opencv-python", "matplotlib", "matplotlib_scalebar"]
