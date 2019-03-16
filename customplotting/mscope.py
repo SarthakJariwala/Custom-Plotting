@@ -33,7 +33,8 @@ def plot_confocal(data, FLIM_adjust=True, scalebar=True, colorbar=True, ticks_vi
             stepsize: what is 1 pixel equal to?
             units: units according to SI system (default: um)
             color: color of scale bar (default: white)
-            height_fraction: height fraction of scale bar (default: 0.05)
+            height_fraction: height fraction of scale bar as a fraction of axes' height (default: 0.05)
+            length_fraction: length fraction of scale bar as a fraction of the axes' width (default: 0.2)
             scale_loc: location of the scale (default: top)
             location: location of scalebar w.r.t. image (default: lower right)
             box_alpha: transparency of box (default: 0)
@@ -65,10 +66,11 @@ def plot_confocal(data, FLIM_adjust=True, scalebar=True, colorbar=True, ticks_vi
         units = kwargs.get('units', 'um')
         color = kwargs.get('color', 'white')
         height_fraction = kwargs.get('height_fraction', 0.05)
+        length_fraction = kwargs.get('length_fraction', 0.2)
         scale_loc = kwargs.get('scale_loc', "top")
         location = kwargs.get('location', "lower right")
         box_alpha = kwargs.get('box_alpha', 0)
-        scalebar = ScaleBar(dx=stepsize, units=units, color=color, height_fraction=height_fraction,
+        scalebar = ScaleBar(dx=stepsize, units=units, color=color, height_fraction=height_fraction, length_fraction=length_fraction,
                             scale_loc=scale_loc, location=location, box_alpha=box_alpha,
                             font_properties=dict(size='x-large', weight='bold'))
         plt.gca().add_artist(scalebar)
@@ -95,7 +97,8 @@ def plot_pixera(data, flip_pixera_to_FLIM=True, scalebar=True, colorbar=True, ti
             size_per_pixel: what is 1 pixel equal to?
             units: units according to SI system (default: um)
             color: color of scale bar (default: white)
-            height_fraction: height fraction of scale bar (default: 0.05)
+            height_fraction: height fraction of scale bar as a fraction of axes' height (default: 0.05)
+            length_fraction: length fraction of scale bar as a fraction of the axes' width (default: 0.2)
             scale_loc: location of the scale (default: top)
             location: location of scalebar w.r.t. image (default: lower right)
             box_alpha: transparency of box (default: 0)
@@ -126,10 +129,11 @@ def plot_pixera(data, flip_pixera_to_FLIM=True, scalebar=True, colorbar=True, ti
         units = kwargs.get('units', 'um')
         color = kwargs.get('color', 'white')
         height_fraction = kwargs.get('height_fraction', 0.05)
+        length_fraction = kwargs.get('length_fraction', 0.2)
         scale_loc = kwargs.get('scale_loc', "top")
         location = kwargs.get('location', "lower right")
         box_alpha = kwargs.get('box_alpha', 0)
-        scalebar = ScaleBar(dx=size_per_pixel, units=units, color=color, height_fraction=height_fraction,
+        scalebar = ScaleBar(dx=size_per_pixel, units=units, color=color, height_fraction=height_fraction, length_fraction=length_fraction,
                             scale_loc=scale_loc, location=location, box_alpha=box_alpha, font_properties=dict(size='x-large', weight='bold'))
         plt.gca().add_artist(scalebar)
 
@@ -163,7 +167,7 @@ def Diffusion_plotting(diff_img_path, total_grains, save=False, norm=False):
         img = img[590:740, 280:430]
 
         plot_pixera(img, flip_pixera_to_FLIM=True, scalebar=True,
-                    colorbar=True, color_map='inferno', max_int=intensity)
+                    colorbar=True, cmap='inferno', vmax=intensity)
         plt.title('Grain #' + filename[-6] + filename[-5], fontsize=25)
 
         if save == True:
@@ -171,8 +175,8 @@ def Diffusion_plotting(diff_img_path, total_grains, save=False, norm=False):
             if not os.path.exists(directory):
                 os.makedirs(directory)
             #plt.savefig(directory + '/' +'Grain_%.f.tiff' %(i), bbox_inches = 'tight', dpi = 300)
-            plt.savefig(directory + '/' + 'Grain_' +
-                        filename[-6] + filename[-5] + '.png', bbox_inches='tight', dpi=300)
+            plt.savefig(directory + '/' + 'Grain_'
+                        + filename[-6] + filename[-5] + '.png', bbox_inches='tight', dpi=300)
             plt.close()
         i += 1
 
