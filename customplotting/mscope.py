@@ -34,7 +34,7 @@ def plot_confocal(data, FLIM_adjust=True, scalebar=True, colorbar=True, ticks_vi
             units: units according to SI system (default: um)
             color: color of scale bar (default: white)
             height_fraction: height fraction of scale bar as a fraction of axes' height (default: 0.05)
-            length_fraction: length fraction of scale bar as a fraction of the axes' width (default: 0.2)
+            length_fraction: length fraction of scale bar as a fraction of the axes' width (default: 0.3)
             scale_loc: location of the scale (default: top)
             location: location of scalebar w.r.t. image (default: lower right)
             box_alpha: transparency of box (default: 0)
@@ -42,7 +42,7 @@ def plot_confocal(data, FLIM_adjust=True, scalebar=True, colorbar=True, ticks_vi
         colorbar: if True, this will plot colorbar for the image. Label can be set using:
             cbar_label: colorbar label, must be string. (default: "PL Intensity (a.u.)")
         figsize: figure size
-        origin: origin of the plot, customisable through matplotlib options
+        origin: origin of the plot, customisable through matplotlib options (default: lower)
         cmap: matplotlib colormap
         vmin: minimum intensity on the colorscale
         vmax: maximum intensity on the colorscale
@@ -52,7 +52,7 @@ def plot_confocal(data, FLIM_adjust=True, scalebar=True, colorbar=True, ticks_vi
     cmap = kwargs.get('cmap', None)
     vmin = kwargs.get('vmin', None)
     vmax = kwargs.get('vmax', None)
-    origin = kwargs.get('origin', None)
+    origin = kwargs.get('origin', 'lower')
     figsize = kwargs.get('figsize', None)
 
     if FLIM_adjust == True:
@@ -66,7 +66,7 @@ def plot_confocal(data, FLIM_adjust=True, scalebar=True, colorbar=True, ticks_vi
         units = kwargs.get('units', 'um')
         color = kwargs.get('color', 'white')
         height_fraction = kwargs.get('height_fraction', 0.05)
-        length_fraction = kwargs.get('length_fraction', 0.2)
+        length_fraction = kwargs.get('length_fraction', 0.3)
         scale_loc = kwargs.get('scale_loc', "top")
         location = kwargs.get('location', "lower right")
         box_alpha = kwargs.get('box_alpha', 0)
@@ -98,7 +98,7 @@ def plot_pixera(data, flip_pixera_to_FLIM=True, scalebar=True, colorbar=True, ti
             units: units according to SI system (default: um)
             color: color of scale bar (default: white)
             height_fraction: height fraction of scale bar as a fraction of axes' height (default: 0.05)
-            length_fraction: length fraction of scale bar as a fraction of the axes' width (default: 0.2)
+            length_fraction: length fraction of scale bar as a fraction of the axes' width (default: 0.3)
             scale_loc: location of the scale (default: top)
             location: location of scalebar w.r.t. image (default: lower right)
             box_alpha: transparency of box (default: 0)
@@ -124,12 +124,13 @@ def plot_pixera(data, flip_pixera_to_FLIM=True, scalebar=True, colorbar=True, ti
     plt.imshow(data, origin=origin, cmap=cmap, vmin=vmin, vmax=vmax)
 
     if scalebar:
+        # To Do: provide objective selection along with size_per_pixel option
         # 1 pixel = 0.02 um for pixera (100x)
         size_per_pixel = kwargs.get('size_per_pixel', 0.02)
         units = kwargs.get('units', 'um')
         color = kwargs.get('color', 'white')
         height_fraction = kwargs.get('height_fraction', 0.05)
-        length_fraction = kwargs.get('length_fraction', 0.2)
+        length_fraction = kwargs.get('length_fraction', 0.3)
         scale_loc = kwargs.get('scale_loc', "top")
         location = kwargs.get('location', "lower right")
         box_alpha = kwargs.get('box_alpha', 0)
