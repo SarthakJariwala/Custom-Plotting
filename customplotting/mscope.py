@@ -22,7 +22,13 @@ plt.rc('legend', fontsize=20)
 plt.rc('axes', linewidth=3.5)
 
 
-def plot_confocal(data, FLIM_adjust=True, scalebar=True, colorbar=True, ticks_visible=False, **kwargs):
+def plot_confocal(
+        data,
+        FLIM_adjust=True,
+        scalebar=True,
+        colorbar=True,
+        ticks_visible=False,
+        **kwargs):
     """
     Plot confocal PL intensity image.
 
@@ -55,7 +61,7 @@ def plot_confocal(data, FLIM_adjust=True, scalebar=True, colorbar=True, ticks_vi
     origin = kwargs.get('origin', 'lower')
     figsize = kwargs.get('figsize', None)
 
-    if FLIM_adjust == True:
+    if FLIM_adjust:
         data = np.transpose(data)
 
     plt.figure(figsize=figsize)
@@ -70,9 +76,18 @@ def plot_confocal(data, FLIM_adjust=True, scalebar=True, colorbar=True, ticks_vi
         scale_loc = kwargs.get('scale_loc', "top")
         location = kwargs.get('location', "lower right")
         box_alpha = kwargs.get('box_alpha', 0)
-        scalebar = ScaleBar(dx=stepsize, units=units, color=color, height_fraction=height_fraction, length_fraction=length_fraction,
-                            scale_loc=scale_loc, location=location, box_alpha=box_alpha,
-                            font_properties=dict(size='x-large', weight='bold'))
+        scalebar = ScaleBar(
+            dx=stepsize,
+            units=units,
+            color=color,
+            height_fraction=height_fraction,
+            length_fraction=length_fraction,
+            scale_loc=scale_loc,
+            location=location,
+            box_alpha=box_alpha,
+            font_properties=dict(
+                size='x-large',
+                weight='bold'))
         plt.gca().add_artist(scalebar)
 
     if colorbar:
@@ -80,12 +95,18 @@ def plot_confocal(data, FLIM_adjust=True, scalebar=True, colorbar=True, ticks_vi
         cb = plt.colorbar()
         cb.set_label(cbar_label, fontsize=20, fontweight='bold')
 
-    if ticks_visible == False:
+    if not ticks_visible:
         plt.gca().axes.get_yaxis().set_visible(False)
         plt.gca().axes.get_xaxis().set_visible(False)
 
 
-def plot_pixera(data, flip_pixera_to_FLIM=True, scalebar=True, colorbar=True, ticks_visible=False, **kwargs):
+def plot_pixera(
+        data,
+        flip_pixera_to_FLIM=True,
+        scalebar=True,
+        colorbar=True,
+        ticks_visible=False,
+        **kwargs):
     """
     Plot pixera images, with the option to adjust the orientation to FLIM image.
 
@@ -134,8 +155,18 @@ def plot_pixera(data, flip_pixera_to_FLIM=True, scalebar=True, colorbar=True, ti
         scale_loc = kwargs.get('scale_loc', "top")
         location = kwargs.get('location', "lower right")
         box_alpha = kwargs.get('box_alpha', 0)
-        scalebar = ScaleBar(dx=size_per_pixel, units=units, color=color, height_fraction=height_fraction, length_fraction=length_fraction,
-                            scale_loc=scale_loc, location=location, box_alpha=box_alpha, font_properties=dict(size='x-large', weight='bold'))
+        scalebar = ScaleBar(
+            dx=size_per_pixel,
+            units=units,
+            color=color,
+            height_fraction=height_fraction,
+            length_fraction=length_fraction,
+            scale_loc=scale_loc,
+            location=location,
+            box_alpha=box_alpha,
+            font_properties=dict(
+                size='x-large',
+                weight='bold'))
         plt.gca().add_artist(scalebar)
 
     if colorbar:
@@ -143,22 +174,22 @@ def plot_pixera(data, flip_pixera_to_FLIM=True, scalebar=True, colorbar=True, ti
         cb = plt.colorbar()
         cb.set_label(cbar_label, fontsize=20, fontweight='bold')
 
-    if flip_pixera_to_FLIM == True:
+    if flip_pixera_to_FLIM:
         plt.gca().invert_xaxis()
         plt.gca().invert_yaxis()
 
-    if ticks_visible == False:
+    if not ticks_visible:
         plt.gca().axes.get_yaxis().set_visible(False)
         plt.gca().axes.get_xaxis().set_visible(False)
 
 
 def Diffusion_plotting(diff_img_path, total_grains, save=False, norm=False):
 
-    assert type(total_grains) == int, ('Must be integer')
+    assert isinstance(total_grains, int), ('Must be integer')
 
     filelist = glob.glob(diff_img_path + '/*.tif')
 
-    if norm == False:
+    if not norm:
         intensity = 255
 
     i = 1
@@ -171,13 +202,13 @@ def Diffusion_plotting(diff_img_path, total_grains, save=False, norm=False):
                     colorbar=True, cmap='inferno', vmax=intensity)
         plt.title('Grain #' + filename[-6] + filename[-5], fontsize=25)
 
-        if save == True:
+        if save:
             directory = diff_img_path + '/GrainDiffusion_plotted'
             if not os.path.exists(directory):
                 os.makedirs(directory)
             #plt.savefig(directory + '/' +'Grain_%.f.tiff' %(i), bbox_inches = 'tight', dpi = 300)
-            plt.savefig(directory + '/' + 'Grain_'
-                        + filename[-6] + filename[-5] + '.png', bbox_inches='tight', dpi=300)
+            plt.savefig(directory + '/' + 'Grain_' + \
+                        filename[-6] + filename[-5] + '.png', bbox_inches='tight', dpi=300)
             plt.close()
         i += 1
 
