@@ -36,7 +36,7 @@ def plot_confocal(
         data: numpy array of PL intensities
         FLIM_adjust: if True, this will plot the image as you see in the FLIM Labview program
         scalebar: if True, this will add a scale bar to the image. The default setting is for 0.1um stepsize, but can be changed using the following arguments:
-            stepsize: what is 1 pixel equal to?
+            stepsize: what is 1 pixel equal to? (default: 0.1 um)
             units: units according to SI system (default: um)
             color: color of scale bar (default: white)
             height_fraction: height fraction of scale bar as a fraction of axes' height (default: 0.05)
@@ -116,7 +116,7 @@ def plot_pixera(
         obj: objective used for the measurement, "100x" or "50x" (default: None). When default value is selected, size_per_pixel can be updated to the value of choice. If no value is provided when obj is set to default (None), the 100x objective scale will be implemented.
         flip_pixera_to_FLIM: if True, this will plot the image aligned in the same way as the image in FLIM Labview program
         scalebar: if True, this will add a scale bar to the image. The default setting is for 100x, but can be changed using the following arguments:
-            size_per_pixel: what is 1 pixel equal to?
+            size_per_pixel: what is 1 pixel equal to? (default: 0.02, 100x obj value)
             units: units according to SI system (default: um)
             color: color of scale bar (default: white)
             height_fraction: height fraction of scale bar as a fraction of axes' height (default: 0.05)
@@ -212,7 +212,7 @@ def Diffusion_plotting(diff_img_path, total_grains, save=False, norm=False):
             if not os.path.exists(directory):
                 os.makedirs(directory)
             #plt.savefig(directory + '/' +'Grain_%.f.tiff' %(i), bbox_inches = 'tight', dpi = 300)
-            plt.savefig(directory + '/' + 'Grain_' + \
+            plt.savefig(directory + '/' + 'Grain_' +
                         filename[-6] + filename[-5] + '.png', bbox_inches='tight', dpi=300)
             plt.close()
         i += 1
