@@ -68,7 +68,7 @@ def plot_confocal(
     plt.imshow(data, origin=origin, cmap=cmap, vmin=vmin, vmax=vmax)
 
     if scalebar:
-        stepsize = kwargs.get('stepsize', 0.1)
+        stepsize = kwargs.get('stepsize', 0.1)  # default is 100 nm stepsize
         units = kwargs.get('units', 'um')
         color = kwargs.get('color', 'white')
         height_fraction = kwargs.get('height_fraction', 0.05)
@@ -102,6 +102,7 @@ def plot_confocal(
 
 def plot_pixera(
         data,
+        obj=None,
         flip_pixera_to_FLIM=True,
         scalebar=True,
         colorbar=True,
@@ -112,9 +113,9 @@ def plot_pixera(
 
     Input:
         data: numpy array of PL intensities
+        obj: objective used for the measurement, "100x" or "50x" (default: None). When default value is selected, size_per_pixel can be updated to the value of choice. If no value is provided when obj is set to default (None), the 100x objective scale will be implemented.
         flip_pixera_to_FLIM: if True, this will plot the image aligned in the same way as the image in FLIM Labview program
-        scalebar: if True, this will add a scale bar to the image. The default setting is for 100x, but can be changed using
-                  the following arguments:
+        scalebar: if True, this will add a scale bar to the image. The default setting is for 100x, but can be changed using the following arguments:
             size_per_pixel: what is 1 pixel equal to?
             units: units according to SI system (default: um)
             color: color of scale bar (default: white)
@@ -145,9 +146,13 @@ def plot_pixera(
     plt.imshow(data, origin=origin, cmap=cmap, vmin=vmin, vmax=vmax)
 
     if scalebar:
-        # To Do: provide objective selection along with size_per_pixel option
-        # 1 pixel = 0.02 um for pixera (100x)
-        size_per_pixel = kwargs.get('size_per_pixel', 0.02)
+        if obj == "100x":
+            size_per_pixel = 0.02  # 1 pixel = 0.02 um for pixera (100x)
+        elif obj == "50x":
+            size_per_pixel = 0.04  # 1 pixel = 0.04 um for pixera (50x)
+        else obj is None:
+            size_per_pixel = kwargs.get(
+                'size_per_pixel', 0.02)  # default is 100x objective value
         units = kwargs.get('units', 'um')
         color = kwargs.get('color', 'white')
         height_fraction = kwargs.get('height_fraction', 0.05)
