@@ -150,7 +150,8 @@ def plot_pixera(
             size_per_pixel = 0.02  # 1 pixel = 0.02 um for pixera (100x)
         elif obj == "50x":
             size_per_pixel = 0.04  # 1 pixel = 0.04 um for pixera (50x)
-        else obj is None:
+        elif obj is None:
+            print("Using 100x Objective defualt. Define size_per_pixel if you want to change it")
             size_per_pixel = kwargs.get(
                 'size_per_pixel', 0.02)  # default is 100x objective value
         units = kwargs.get('units', 'um')
