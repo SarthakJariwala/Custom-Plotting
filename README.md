@@ -25,6 +25,6 @@ cpm.plot_confocal(data, figsize = (10,10), origin = 'lower', cmap = 'inferno', v
 
 ## Dependencies
 * ```matplotlib```
-* ```matplotlib_scalar```
+* ```matplotlib_scalebar```
 * ```opencv-python```
 * ```numpy```
