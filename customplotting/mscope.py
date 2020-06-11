@@ -24,6 +24,7 @@ plt.rc('axes', linewidth=3.5)
 
 def plot_confocal(
         data,
+        new_fig = True,
         FLIM_adjust=True,
         scalebar=True,
         colorbar=True,
@@ -34,6 +35,7 @@ def plot_confocal(
 
     Input:
         data: numpy array of PL intensities
+        new_fig: if True, it will create a new figure to plot data 
         FLIM_adjust: if True, this will plot the image as you see in the FLIM Labview program
         scalebar: if True, this will add a scale bar to the image. The default setting is for 0.1um stepsize, but can be changed using the following arguments:
             stepsize: what is 1 pixel equal to? (default: 0.1 um)
@@ -64,7 +66,8 @@ def plot_confocal(
     if FLIM_adjust:
         data = np.transpose(data)
 
-    plt.figure(figsize=figsize)
+    if new_fig:
+        plt.figure(figsize=figsize)
     plt.imshow(data, origin=origin, cmap=cmap, vmin=vmin, vmax=vmax)
 
     if scalebar:
@@ -187,40 +190,3 @@ def plot_pixera(
     if not ticks_visible:
         plt.gca().axes.get_yaxis().set_visible(False)
         plt.gca().axes.get_xaxis().set_visible(False)
-
-
-def Diffusion_plotting(diff_img_path, total_grains, save=False, norm=False):
-
-    assert isinstance(total_grains, int), ('Must be integer')
-
-    filelist = glob.glob(diff_img_path + '/*.tif')
-
-    if not norm:
-        intensity = 255
-
-    i = 1
-    for filename in filelist:
-
-        img = cv2.imread(filename, cv2.IMREAD_GRAYSCALE)
-        img = img[590:740, 280:430]
-
-        plot_pixera(img, flip_pixera_to_FLIM=True, scalebar=True,
-                    colorbar=True, cmap='inferno', vmax=intensity)
-        plt.title('Grain #' + filename[-6] + filename[-5], fontsize=25)
-
-        if save:
-            directory = diff_img_path + '/GrainDiffusion_plotted'
-            if not os.path.exists(directory):
-                os.makedirs(directory)
-            #plt.savefig(directory + '/' +'Grain_%.f.tiff' %(i), bbox_inches = 'tight', dpi = 300)
-            plt.savefig(directory + '/' + 'Grain_' +
-                        filename[-6] + filename[-5] + '.png', bbox_inches='tight', dpi=300)
-            plt.close()
-        i += 1
-
-        if i == total_grains + 1:
-            break
-        else:
-            continue
-
-    return
