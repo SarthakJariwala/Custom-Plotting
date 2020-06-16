@@ -23,6 +23,7 @@ def plot_xy(
         ylabel: Y-axis label
         axis_label_fontsize: Fontsize for X and Y-axis labels
         axis_label_fontweight: Fontweight for X and Y-axis labels
+        title: plot title
     """
 
     xlabel = kwargs.get('xlabel', None)
@@ -30,6 +31,7 @@ def plot_xy(
     axis_label_fontsize = kwargs.get('axis_label_fontsize', 30)
     axis_label_fontweight = kwargs.get('axis_label_fontweight', 'bold')
     figsize = kwargs.get('figsize', None)
+    title = kwargs.get('title', None)
 
     label = kwargs.get('label', None)
     ls = kwargs.get('ls', '-')
@@ -55,4 +57,13 @@ def plot_xy(
             fontweight=axis_label_fontweight)
     if label is not None:
         plt.legend()
+    
+    if title is not None:
+        plt.title(
+            title,
+            fontsize=axis_label_fontsize,
+            fonweight=axis_label_fontweight)
     plt.tight_layout()
+
+def save_fig(filename, dpi=300):
+    plt.savefig(filename, bbox_inches='tight', dpi=dpi)
