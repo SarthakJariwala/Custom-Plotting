@@ -5,21 +5,9 @@ Created on Mon Oct 15 13:16:26 2018
 @author: Sarthak
 """
 
-import os
-import glob
 import numpy as np
 import matplotlib.pyplot as plt
-import cv2
 from matplotlib_scalebar.scalebar import ScaleBar
-
-"""Recylce params for plotting"""
-plt.rc('xtick', labelsize=20)
-plt.rc('xtick.major', pad=3)
-plt.rc('ytick', labelsize=20)
-plt.rc('ytick.major', pad=3)
-plt.rc('lines', lw=1.5, markersize=7.5)
-plt.rc('legend', fontsize=20)
-plt.rc('axes', linewidth=3.5)
 
 
 def plot_confocal(
