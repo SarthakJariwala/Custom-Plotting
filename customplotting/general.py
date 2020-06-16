@@ -62,7 +62,7 @@ def plot_xy(
         plt.title(
             title,
             fontsize=axis_label_fontsize,
-            fonweight=axis_label_fontweight)
+            fontweight=axis_label_fontweight)
     plt.tight_layout()
 
 def save_fig(filename, dpi=300):
