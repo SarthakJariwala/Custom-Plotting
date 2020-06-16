@@ -24,7 +24,7 @@ plt.rc('axes', linewidth=3.5)
 
 def plot_confocal(
         data,
-        new_fig = True,
+        new_fig=True,
         FLIM_adjust=True,
         scalebar=True,
         colorbar=True,
@@ -35,7 +35,7 @@ def plot_confocal(
 
     Input:
         data: numpy array of PL intensities
-        new_fig: if True, it will create a new figure to plot data 
+        new_fig: if True, it will create a new figure to plot data
         FLIM_adjust: if True, this will plot the image as you see in the FLIM Labview program
         scalebar: if True, this will add a scale bar to the image. The default setting is for 0.1um stepsize, but can be changed using the following arguments:
             stepsize: what is 1 pixel equal to? (default: 0.1 um)
@@ -154,7 +154,8 @@ def plot_pixera(
         elif obj == "50x":
             size_per_pixel = 0.04  # 1 pixel = 0.04 um for pixera (50x)
         elif obj is None:
-            print("Using 100x Objective defualt. Define size_per_pixel if you want to change it")
+            print(
+                "Using 100x Objective defualt. Define size_per_pixel if you want to change it")
             size_per_pixel = kwargs.get(
                 'size_per_pixel', 0.02)  # default is 100x objective value
         units = kwargs.get('units', 'um')

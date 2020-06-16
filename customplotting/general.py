@@ -1,11 +1,11 @@
 import matplotlib.pyplot as plt
 
+
 def plot_xy(
     x, y,
-    new_fig = True,
+    new_fig=True,
     **kwargs
-    ):
-
+):
     """
     Plot X-Y data.
 
@@ -38,15 +38,21 @@ def plot_xy(
     ms = kwargs.get('ms', 7)
 
     if new_fig:
-        plt.figure(figsize=figsize)  
+        plt.figure(figsize=figsize)
         plt.tick_params(direction='out', length=8, width=3.5)
-    
-    plt.plot(x,y, ls=ls, lw=lw, marker=marker, ms=ms, label=label)
-    
+
+    plt.plot(x, y, ls=ls, lw=lw, marker=marker, ms=ms, label=label)
+
     if xlabel is not None:
-        plt.xlabel(xlabel, fontsize=axis_label_fontsize, fontweight=axis_label_fontweight)
+        plt.xlabel(
+            xlabel,
+            fontsize=axis_label_fontsize,
+            fontweight=axis_label_fontweight)
     if ylabel is not None:
-        plt.ylabel(ylabel, fontsize=axis_label_fontsize, fontweight=axis_label_fontweight)
+        plt.ylabel(
+            ylabel,
+            fontsize=axis_label_fontsize,
+            fontweight=axis_label_fontweight)
     if label is not None:
         plt.legend()
     plt.tight_layout()
