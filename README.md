@@ -13,7 +13,7 @@ pip install customplotting
 ### Check out the jupyter notebook for examples
 
 ## Why use?
-`Matplotlib` is an **AMAZING** package but if you are like me and are tired of typing 5-7 lines of code everytime to get a good publishable quality figure using matplotlib everytime you want to plot, then `customplotting` is the answer.
+`Matplotlib` is an **AMAZING** package but if you are like me and are tired of typing 5-7 lines of code everytime you want a good publishable quality figure, then `customplotting` is the answer.
 
 `Customplotting` basically wraps the matplotlib functions to allow you to quickly plot commonly used plots like x-y, images with scalebars, etc with only one line of code.
 
