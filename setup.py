@@ -8,10 +8,14 @@ ver_file = os.path.join('customplotting', 'version.py')
 with open(ver_file) as f:
     exec(f.read())
 
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
 opts = dict(name=NAME,
             maintainer=MAINTAINER,
             maintainer_email=MAINTAINER_EMAIL,
             description=DESCRIPTION,
+            long_description=long_description,
             url=URL,
             download_url=DOWNLOAD_URL,
             license=LICENSE,

@@ -26,7 +26,7 @@ CLASSIFIERS = ["Development Status :: 3 - Alpha",
                "Topic :: Scientific/Engineering"]
 
 # Description should be a one-liner:
-description = "customplotting: custom plotting functions"
+description = "customplotting: make publishable quality science figures quickly"
 # Long description will go up on the pypi page
 # long_description = """
 
