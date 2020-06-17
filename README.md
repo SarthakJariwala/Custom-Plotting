@@ -1,16 +1,27 @@
 # Custom-Plotting
 [![PyPI version](https://badge.fury.io/py/customplotting.svg)](https://badge.fury.io/py/customplotting)
 
-Custom-plotting is a Python package with the aim of producing publication quality fluorescence microscopy data. The functions wrap around ```matplotlib``` library for plotting with the option to add a scalebar directly to the image using ```matplotlib_scalebar```. The images can customized (colorbar, axis, etc) using the same key word arguments as in ```matplotlib```. See function docstring for more information about customization.
+Custom-plotting is a python package written with the aim of producing scientific publication quality figures as quickly as possible with as little code as possible [(checkout examples)](https://github.com/SarthakJariwala/Custom-Plotting/tree/master/examples). 
 
-The primary users for this Python package are Ginger Lab members at the University of Washington, Seattle but is licensed under MIT License and open for everyone to use.
+The functions wrap around ```matplotlib``` library for plotting with the customizable options. For instance, you can directly add a scalebar to your image without additional code. The figures can customized (colorbar, axis, linewidth, labels, etc) using the same key word arguments as in ```matplotlib```. See function docstrings for more information about customization.
 
 ## Install
 ```
 pip install customplotting
 ```
 
-### Check out the jupyter notebook for examples
+## Example Usage
+```python
+"Make a publishable X-Y plot"
+from customplotting.general import plot_xy
+plot_xy([1,2,3], [4,5,6], xlabel="Random X", ylabel="Random Y")
+
+"Make a publishable image with scalebar"
+from customplotting.mscope import plot_confocal
+plot_confocal(img_data, stepsize=0.5, units='nm', cbar_label="Height (nm)")
+```
+![Sample Image](https://github.com/SarthakJariwala/Custom-Plotting/blob/master/examples/MyImage.png)
+### Check out the [jupyter notebook for more examples](https://github.com/SarthakJariwala/Custom-Plotting/tree/master/examples)
 
 ## Why use?
 `Matplotlib` is an **AMAZING** package but if you are like me and are tired of typing 5-7 lines of code everytime you want a good publishable quality figure, then `customplotting` is the answer.
