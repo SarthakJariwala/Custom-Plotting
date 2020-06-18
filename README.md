@@ -17,12 +17,12 @@ from customplotting.mscope import plot_confocal
 plot_confocal(img_data, stepsize=0.5, units='nm', cbar_label="Height (nm)")
 ```
 ![Sample Image](https://github.com/SarthakJariwala/Custom-Plotting/blob/master/examples/MyImage.png)
-### Check out the [jupyter notebook for more examples](https://github.com/SarthakJariwala/Custom-Plotting/tree/master/examples)
 ```python
 """Make a publishable X-Y plot"""
 from customplotting.general import plot_xy
 plot_xy([1,2,3], [4,5,6], xlabel="Random X", ylabel="Random Y")
 ```
+### Check out the [jupyter notebook for more examples](https://github.com/SarthakJariwala/Custom-Plotting/tree/master/examples)
 
 ## Why use?
 `Matplotlib` is an **AMAZING** package but if you are like me and are tired of typing 5-7 lines of code everytime you want a good publishable quality figure, then `customplotting` is the answer.
