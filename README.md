@@ -22,6 +22,7 @@ plt.gca().add_artist(scalebar)
 You only need **1 line of code** to get the same plot: 
 ```python
 from customplotting.mscope import plot_confocal
+
 """Plot image with scalebar"""
 plot_confocal(img_data, stepsize=0.5, units='nm', cbar_label="Height (nm)")
 ```
