@@ -1,5 +1,5 @@
 # Custom-Plotting
-[![PyPI version](https://badge.fury.io/py/customplotting.svg)](https://badge.fury.io/py/customplotting)
+[![PyPI version](https://badge.fury.io/py/customplotting.svg)](https://badge.fury.io/py/customplotting) [![Downloads](https://pepy.tech/badge/customplotting)](https://pepy.tech/project/customplotting)
 
 Custom-plotting is a python package written with the aim of producing scientific publication quality figures as quickly as possible with as little code as possible [(checkout examples)](https://github.com/SarthakJariwala/Custom-Plotting/tree/master/examples). 
 
