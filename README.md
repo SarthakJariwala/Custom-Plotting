@@ -3,6 +3,30 @@
 
 Custom-plotting is a python package written with the aim of producing scientific publication quality figures as quickly as possible with as little code as possible [(checkout examples)](https://github.com/SarthakJariwala/Custom-Plotting/tree/master/examples). 
 
+So instead of typing **8 lines of code** in matplotlib everytime:
+```python
+import matplotlib.pyplot as plt
+from matplotlib_scalebar.scalebar import ScaleBar
+
+"""Plot image"""
+plt.figure()
+plt.imshow(img_data)
+cb = plt.colorbar()
+cb.set_label("Height (nm)", fontsize=20, fontweight='bold')
+plt.gca().axes.get_yaxis().set_visible(False)
+plt.gca().axes.get_xaxis().set_visible(False)
+"""Add scalebar"""
+scalebar = ScaleBar(dx=0.5, units='nm') # 1 pixel = 0.5 nm
+plt.gca().add_artist(scalebar)
+```
+You only need **1 line of code** to get the same plot: 
+```python
+from customplotting.mscope import plot_confocal
+"""Plot image with scalebar"""
+plot_confocal(img_data, stepsize=0.5, units='nm', cbar_label="Height (nm)")
+```
+**It saves you from a lot of unnecessary typing (if you often plot data)**
+
 The functions wrap around ```matplotlib``` library for plotting with the customizable options. For instance, you can directly add a scalebar to your image without additional code. The figures can customized (colorbar, axis, linewidth, labels, etc) using the same key word arguments as in ```matplotlib```. See function docstrings for more information about customization.
 
 ## Install
