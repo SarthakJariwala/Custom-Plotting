@@ -35,6 +35,15 @@ plot_confocal(img_data, stepsize=0.5, units='nm', cbar_label="Height (nm)")
 * Colorbar can be customized with labels (and also removed if needed)
 * X-axis and Y-axis ticks can be added/removed now
 
+## Contribute
+Contributions are always welcome! See [CONTRIBUTING.md](https://github.com/SarthakJariwala/Custom-Plotting/tree/master/CONTRIBUTING.md)
+
+## Issues
+Open an issue if you come across any!
+
+## License
+[MIT License](https://github.com/SarthakJariwala/Custom-Plotting/tree/master/LICENSE)
+
 ## Dependencies
 * ```matplotlib```
 * ```matplotlib_scalar```
