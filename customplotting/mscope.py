@@ -24,7 +24,7 @@ def plot_confocal(
     Input:
         data: numpy array of PL intensities
         new_fig: if True, it will create a new figure to plot data
-        FLIM_adjust: if True, this will plot the image as you see in the FLIM Labview program
+        FLIM_adjust: (to be deprecated) if True, this will plot the image as you see in the FLIM Labview program
         scalebar: if True, this will add a scale bar to the image. The default setting is for 0.1um stepsize, but can be changed using the following arguments:
             stepsize: what is 1 pixel equal to? (default: 0.1 um)
             units: units according to SI system (default: um)
@@ -38,17 +38,10 @@ def plot_confocal(
         colorbar: if True, this will plot colorbar for the image. Label can be set using:
             cbar_label: colorbar label, must be string. (default: "PL Intensity (a.u.)")
         figsize: figure size
-        origin: origin of the plot, customisable through matplotlib options (default: lower)
-        cmap: matplotlib colormap
-        vmin: minimum intensity on the colorscale
-        vmax: maximum intensity on the colorscale
+        **kwargs: All matplotlib "imshow" kwargs
 
     """
 
-    cmap = kwargs.get('cmap', None)
-    vmin = kwargs.get('vmin', None)
-    vmax = kwargs.get('vmax', None)
-    origin = kwargs.get('origin', 'lower')
     figsize = kwargs.get('figsize', None)
 
     if FLIM_adjust:
@@ -56,7 +49,7 @@ def plot_confocal(
 
     if new_fig:
         plt.figure(figsize=figsize)
-    plt.imshow(data, origin=origin, cmap=cmap, vmin=vmin, vmax=vmax)
+    plt.imshow(data, **kwargs)
 
     if scalebar:
         stepsize = kwargs.get('stepsize', 0.1)  # default is 100 nm stepsize
@@ -67,6 +60,7 @@ def plot_confocal(
         scale_loc = kwargs.get('scale_loc', "top")
         location = kwargs.get('location', "lower right")
         box_alpha = kwargs.get('box_alpha', 0)
+        
         scalebar = ScaleBar(
             dx=stepsize,
             units=units,
@@ -93,6 +87,7 @@ def plot_confocal(
 
 def plot_pixera(
         data,
+        new_fig=True,
         obj=None,
         flip_pixera_to_FLIM=True,
         scalebar=True,
@@ -104,8 +99,9 @@ def plot_pixera(
 
     Input:
         data: numpy array of PL intensities
+        new_fig: if True, it will create a new figure to plot data
         obj: objective used for the measurement, "100x" or "50x" (default: None). When default value is selected, size_per_pixel can be updated to the value of choice. If no value is provided when obj is set to default (None), the 100x objective scale will be implemented.
-        flip_pixera_to_FLIM: if True, this will plot the image aligned in the same way as the image in FLIM Labview program
+        flip_pixera_to_FLIM: (to be deprecated) if True, this will plot the image aligned in the same way as the image in FLIM Labview program
         scalebar: if True, this will add a scale bar to the image. The default setting is for 100x, but can be changed using the following arguments:
             size_per_pixel: what is 1 pixel equal to? (default: 0.02, 100x obj value)
             units: units according to SI system (default: um)
@@ -120,21 +116,15 @@ def plot_pixera(
             cbar_label: colorbar label, must be string. (default: "PL Intensity (a.u.)")
         ticks_visible: if False, it will remove xaxis and yaxis ticks
         figsize: figure size
-        origin: origin of the plot, customisable through matplotlib options
-        cmap: matplotlib colormap
-        vmin: minimum intensity on the colorscale
-        vmax: maximum intensity on the colorscale
+        **kwargs: all matplotlib "imshow" kwargs
 
     """
 
-    cmap = kwargs.get('cmap', None)
-    vmin = kwargs.get('vmin', None)
-    vmax = kwargs.get('vmax', None)
-    origin = kwargs.get('origin', None)
     figsize = kwargs.get('figsize', None)
 
-    plt.figure(figsize=figsize)
-    plt.imshow(data, origin=origin, cmap=cmap, vmin=vmin, vmax=vmax)
+    if new_fig:
+        plt.figure(figsize=figsize)
+    plt.imshow(data, **kwargs)
 
     if scalebar:
         if obj == "100x":
