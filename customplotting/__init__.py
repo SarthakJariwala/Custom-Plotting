@@ -13,3 +13,7 @@ plt.rc('lines', lw=1.5, markersize=7.5)
 plt.rc('legend', fontsize=20)
 plt.rc('axes', linewidth=3.5)
 plt.rc('font', **font)
+
+
+def join_doc_style(parent_doc, child_doc):
+        return "\n      -----".join([parent_doc, child_doc])
