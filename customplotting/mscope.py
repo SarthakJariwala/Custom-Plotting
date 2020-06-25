@@ -30,7 +30,7 @@ def plot_confocal(
         FLIM_adjust=False,
         **kwargs):
     """
-    FLIM_adjust: (Deprecated) if True, this will plot the image as you see in the FLIM Labview program
+    FLIM_adjust: (Deprecated)
     """
 
     if FLIM_adjust:
